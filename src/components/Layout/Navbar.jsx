@@ -2,7 +2,7 @@ import React from 'react'
 import { StyledNavbar } from '../Styles/Navbar.Styled'
 import logo from '../../Assets/logo.png'
 import { NavLink } from 'react-router-dom'
-const Navbar = () => {
+const Navbar = ({ toggleTheme }) => {
     return (
         
         <StyledNavbar>
@@ -28,6 +28,15 @@ const Navbar = () => {
                     <i className="fa-solid fa-newspaper"></i>
                     News
                 </NavLink>
+            </div>
+            <div className='theme-wrapper'>
+                <p>Theme</p>
+                <div className='theme-icons-container'>
+                    <i className="fa-regular fa-sun"></i>
+                    <input type="checkbox" id="switch" onClick={toggleTheme}/>
+                    <label htmlFor="switch">Toggle</label>
+                    <i className="fa-regular fa-moon"></i>
+                </div>
             </div>
         </StyledNavbar>
     )

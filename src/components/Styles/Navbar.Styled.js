@@ -6,10 +6,16 @@ export const StyledNavbar = styled.nav`
     height: 100vh;
     background-color: ${({theme})=> theme.colors.navBar};
     
+    p{
+        color: ${({theme})=>theme.colors.primaryText};
+    }
+    h1,h2{
+        color: ${({theme})=>theme.colors.primaryText};
+    }
     .logo-container{
         display: flex;
         margin-bottom: 2.8rem;
-        color: ${({theme})=>theme.colors.primaryText};
+        
     }
 
     .logo-container img{
@@ -50,9 +56,27 @@ export const StyledNavbar = styled.nav`
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        margin-bottom: 120px;
+        font-weight:${({theme})=> theme.colors.fontWeight} ;
     }
 
     .nav-links i{
         margin-right: 10px;
+    }
+    .theme-wrapper{
+        padding: .8rem 3.5rem .8rem .8rem;
+    }
+    
+    .theme-wrapper p{
+        margin-bottom: 1rem;
+    }
+    .theme-icons-container {
+        display: flex;
+        
+        color: ${({theme})=>theme.colors.primaryText};
+    }
+
+    .theme-container > div{
+        align-self: flex-start;
     }
 `
