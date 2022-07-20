@@ -1,0 +1,68 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.logo{
+  width: 35px;
+  
+}
+
+
+
+.logo-flex{
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+  .logo-flex  p{
+  position: relative;
+  font-weight: bold;
+  font-size: 1.5rem;
+  
+}
+
+.light .logo-flex  p{
+  color: black;
+}
+
+.padding{
+  width: 350px;
+  border-radius: 5px;
+  padding: 3rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  margin: 2rem auto 0;
+}
+
+.dark{
+  background-color: rgba(0, 0, 0, 0.982);
+  
+}
+.dark .logo-flex  p{
+  color: rgba(230, 230, 230, 0.992);
+}
+.dark h2{
+  color: rgba(230, 230, 230, 0.992);
+}
+
+.dark p{
+  color: rgba(230, 230, 230, 0.692);
+}
+
+.light h2 { 
+  color: #1C1C1C;
+  background-color: rgb(236, 236, 236);
+}
+
+.light p{
+  color: #585757;
+}
+
+.light .logo-flex span ,.dark .logo-flex span{
+  color: rgb(31, 154, 255);
+}
+
+.main-container{
+  margin-left: 500px;
+}
