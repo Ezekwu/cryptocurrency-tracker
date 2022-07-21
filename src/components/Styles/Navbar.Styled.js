@@ -6,12 +6,7 @@ export const StyledNavbar = styled.nav`
     height: 100vh;
     background-color: ${({theme})=> theme.colors.navBar};
     
-    p{
-        color: ${({theme})=>theme.colors.primaryText};
-    }
-    h1,h2{
-        color: ${({theme})=>theme.colors.primaryText};
-    }
+    
     .logo-container{
         display: flex;
         margin-bottom: 2.8rem;

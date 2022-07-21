@@ -12,23 +12,26 @@ import News from './pages/News';
 import NotFound from './pages/NotFound';
 
 import { CryptoProvider } from './context/Crypto/CryptoContext';
+import GlobalStyles from './components/Styles/Global';
 
 const lightTheme = {
   colors: {
     primaryText: '#1C1C1C',
     secondaryText:'#585757',
     mainBlue: 'rgb(23 136 229)',
-    navBar: 'rgb(247 247 247)'
+    navBar: 'rgb(247 247 247)',
+    mainBackground: 'white'
   }
 }
 
 const darkTheme = {
   colors: {
     primaryText: 'white',
-    secondaryText:'rgba(230, 230, 230, 0.692)',
+    secondaryText:'rgb(230 230 230 / 92%)',
     mainBlue: 'rgb(27 151 255)',
-    navBar: ' rgb(0 0 0 / 94%)',
-    fontWeight: '300'
+    navBar: 'rgb(0 0 0)',
+    fontWeight: '300',
+    mainBackground:'rgb(0 0 0)'
   }
 }
 
@@ -44,6 +47,7 @@ function App() {
   return (
     <CryptoProvider>
       <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
+        <GlobalStyles />
         <div className="container">
           <Router>
             <Navbar toggleTheme={toggleTheme}/>
