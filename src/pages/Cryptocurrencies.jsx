@@ -2,68 +2,70 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import CryptoContext from '../context/Crypto/CryptoContext'
-import NumberFormat from 'react-number-format'
 
-import { StyledGlobalStats } from '../components/Styles/GlobalStats.Styled'
+import { StyledTable } from '../components/Styles/Table.Styled'
+
+import CryptoList from '../components/Crypto/CryptoList'
+import { StyledCryptos } from '../components/Styles/Cryptocurrencies.Styled'
 const Cryptocurrencies = () => {
-    const { fetchCryptosData, coins, globalStats } = useContext(CryptoContext)
+    const { fetchCryptosData, coins } = useContext(CryptoContext)
+    const [coinList, setCoinList] = useState([])
+    
+    const [searchValue, setSearchValue] = useState('')
     useEffect(()=>{
-
-        fetchCryptosData();
-
+        fetchCryptosData(100);
     },[])
     
-    const {
-        totalCoins,
-        totalExchanges,
-        totalMarketCap,
-        total24hVolume,
-    } = globalStats
-    return (
-        <>
-            <StyledGlobalStats>
-                <div>
-                    <h4>Cryptos: <span> <NumberFormat 
-                    displayType={'text'} 
-                    thousandSeparator={true}
-                    value={totalCoins}/> </span> 
-                    
-                    </h4>
-                </div>
-                
-                <div>
-                    <h4>Exchanges: <span>{totalExchanges}</span></h4>
-                </div>
-                
-
-                <div>
-                    <h4>Market Cap: <span> <NumberFormat 
-                    displayType={'text'} 
-                    thousandSeparator={true}
-                    value={totalMarketCap}
-                    prefix={'$'}/> </span> 
-                    
-                    </h4>
-                </div>
-
-                <div>
-                    <h4>24h Vol: <span> <NumberFormat 
-                    displayType={'text'} 
-                    thousandSeparator={true}
-                    value={total24hVolume}
-                    prefix={'$'}/> </span> 
-                    
-                    </h4>
-                </div>
-            </StyledGlobalStats>
-            {coins.map((coin)=>(
-                <div>
-                    <h2>{coin.name}</h2>
-                    <img src={coin.iconUrl} alt="" width={'20px'}/>
-                </div>
-            ))}
-        </>
+    //Search feature
+    useEffect(() => {
+        const filteredData = coins.filter((coin)=> coin.name.toLowerCase().includes(searchValue.toLowerCase()))
+        setCoinList(filteredData)
+        console.log(coinList);
         
+    }, [searchValue, coins])
+    
+    
+    return (
+
+        <StyledCryptos>
+
+            <div className='input-container'>
+                <input type="text" placeholder='search cryptocurrencies'
+                value={searchValue}
+                onChange={(e)=> setSearchValue(e.target.value)}/>
+                <i className="fa-solid fa-magnifying-glass"></i>
+            </div>
+        
+            <StyledTable>
+                
+                <div className='main-crypto-container'>
+                    
+                    <div>
+                        <table>
+                            
+                            
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>%24h</th>
+                                    <th>Market Cap</th>
+                                    <th>24hr Volume</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {coinList.map((coin)=>(
+                                    <CryptoList coin={coin}  key={coin.uuid}/>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </StyledTable>
+        </StyledCryptos>
     )
 }
 

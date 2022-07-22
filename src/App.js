@@ -20,18 +20,20 @@ const lightTheme = {
     secondaryText:'#585757',
     mainBlue: 'rgb(23 136 229)',
     navBar: 'rgb(247 247 247)',
-    mainBackground: 'white'
+    mainBackground: 'white',
+    borderColor: '#e9e9e9'
   }
 }
 
 const darkTheme = {
   colors: {
-    primaryText: 'white',
+    primaryText: 'rgb(255, 255, 255)',
     secondaryText:'rgb(230 230 230 / 92%)',
     mainBlue: 'rgb(27 151 255)',
-    navBar: 'rgb(0 0 0)',
+    navBar: '#17171A',
     fontWeight: '300',
-    mainBackground:'rgb(0 0 0)'
+    mainBackground:'#17171A',
+    borderColor: '#424242'
   }
 }
 
@@ -48,11 +50,11 @@ function App() {
     <CryptoProvider>
       <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
         <GlobalStyles />
-        <div className="container">
+        <div className="app">
           <Router>
             <Navbar toggleTheme={toggleTheme}/>
             <div className='main-container'>
-              <main>
+              <main >
                 <Routes>
                   <Route path='/' element={<Home />}/>
                   <Route path='/cryptocurencies' element={<Cryptocurrencies />}/>

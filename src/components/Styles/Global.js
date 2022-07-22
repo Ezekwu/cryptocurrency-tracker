@@ -5,13 +5,18 @@ const GlobalStyles = createGlobalStyle`
 	margin: 0;
 	padding: 0;
 	font-family: 'Montserrat', sans-serif;
+    
+}
+
+body{
+	overflow-x: hidden;
 }
 
 p{   
     color: ${({theme})=>theme.colors.primaryText};
 }
 
-h1,h2{
+h1, h2{
     color: ${({theme})=>theme.colors.primaryText};
 }
 
@@ -19,7 +24,7 @@ h3,h4{
     color: ${({theme})=>theme.colors.secondaryText};
 }
 .main-container{
-    margin-left: 286px;
+    margin-left: 278px;
 }
 
 input[type=checkbox]{

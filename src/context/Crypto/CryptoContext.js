@@ -12,7 +12,7 @@ export const CryptoProvider = ({ children }) => {
     const [state, dispatch] = useReducer(CryptoReducer, initialState)
 
     //Get general crypto data from api
-    const fetchCryptosData = async () => {
+    const fetchCryptosData = async (count) => {
         const CRYPTO_URL = 'https://coinranking1.p.rapidapi.com'
 
         const options = {
@@ -23,7 +23,7 @@ export const CryptoProvider = ({ children }) => {
             }
         };
         
-        const response = await fetch(`${CRYPTO_URL}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=100&offset=0`, options)
+        const response = await fetch(`${CRYPTO_URL}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=${count}&offset=0`, options)
         
         const data = await response.json();
         //getting coins and statistics from API
