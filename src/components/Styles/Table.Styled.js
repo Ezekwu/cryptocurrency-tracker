@@ -3,17 +3,29 @@ import styled from "styled-components";
 export const StyledTable = styled.div`
     
     overflow-x: scroll;
-    font-weight: bold;
+    overflow-y: hidden;
+    
     color: ${({theme})=>theme.colors.secondaryText};
+    a{
+        text-decoration: none;
+        color: ${({theme})=>theme.colors.secondaryText};
+        
+    }
+
+    a:hover{
+        text-decoration: underline;
+    }
     h2{
         margin-bottom: 2rem;
     }
     table {
-        
+        border-collapse: collapse;
         text-align: left;
         width: 100%;
     }
-    
+    thead{
+        background-color: ${({theme})=> theme.colors.navBar};
+    }
     
     td, th{
         padding: .9rem 1rem;
@@ -30,7 +42,10 @@ export const StyledTable = styled.div`
     }
     table h3{
         display: inline-block;
-        font-size: 1.17rem;
+        font-size: 1rem;
+    }
+    td:nth-child(2), td:nth-child(2){
+        min-width: 300px;
     }
 
     .crypto-icon-name{
@@ -54,11 +69,13 @@ export const StyledTable = styled.div`
     .price-change-container .down{
         color: red;
     }
+        table{
+            overflow-y: hidden;
+            
+        }
 
     @media(max-width:1100px){
-        td:nth-child(7) {
-            overflow-y: hidden;
-        }
+        
         th:nth-child(1), td:nth-child(1) {
             position: sticky;
             left: 20px;

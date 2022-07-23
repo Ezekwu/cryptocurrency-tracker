@@ -58,7 +58,7 @@ function App() {
                 <Routes>
                   <Route path='/' element={<Home />}/>
                   <Route path='/cryptocurencies' element={<Cryptocurrencies />}/>
-                  <Route path='/coin/:coin-id' element={<Cryptocurrency />}/>
+                  <Route path='/coin/:coinId' element={<Cryptocurrency />}/>
                   <Route path='/exchanges' element={<Exchanges />}/>
                   <Route path='/news' element={<News />}/>
                   <Route path='/*' element={<NotFound />}/>

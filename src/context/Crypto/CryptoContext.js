@@ -7,23 +7,33 @@ export const CryptoProvider = ({ children }) => {
 
     const initialState ={
         coins: [],
-        globalStats: []
+        loading: false,
+        globalStats: [],
+        cryptoDetails: {}
     }
     const [state, dispatch] = useReducer(CryptoReducer, initialState)
 
+    const CRYPTO_URL = 'https://coinranking1.p.rapidapi.com'
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '6f25902dd2msh495cf2a5a25eab9p18d85bjsndadfd43ccfc4',
+            'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+        }
+    };
+
+    
+    const setLoading = () => {
+        dispatch({
+            type: 'SET_LOADING',
+        })
+    }
     //Get general crypto data from api
     const fetchCryptosData = async (count) => {
-        const CRYPTO_URL = 'https://coinranking1.p.rapidapi.com'
-
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '6f25902dd2msh495cf2a5a25eab9p18d85bjsndadfd43ccfc4',
-                'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
-            }
-        };
+        setLoading()
         
-        const response = await fetch(`${CRYPTO_URL}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=${count}&offset=0`, options)
+        const response = await fetch(`${CRYPTO_URL}/coins?limit=${count}`, options)
         
         const data = await response.json();
         //getting coins and statistics from API
@@ -41,10 +51,23 @@ export const CryptoProvider = ({ children }) => {
         })
     }
     
+    const fetchCoinDetails = async (coinId) => {
+        setLoading()
+        const response = await fetch(`${CRYPTO_URL}/coin/${coinId}`, options)
+        const data = await response.json()
+        const coinDetails = data.data.coin
+        
+        dispatch({
+            type: 'GET_COIN_DETAILS',
+            payload: coinDetails
+        })
+    }
+    
     return (
         <CryptoContext.Provider value={{
             ...state,
-            fetchCryptosData
+            fetchCryptosData,
+            fetchCoinDetails
         }}>
             {children}
         </CryptoContext.Provider>

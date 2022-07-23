@@ -20,7 +20,7 @@ const Cryptocurrencies = () => {
     useEffect(() => {
         const filteredData = coins.filter((coin)=> coin.name.toLowerCase().includes(searchValue.toLowerCase()))
         setCoinList(filteredData)
-        console.log(coinList);
+        
         
     }, [searchValue, coins])
     
@@ -28,22 +28,17 @@ const Cryptocurrencies = () => {
     return (
 
         <StyledCryptos>
-
             <div className='input-container'>
                 <input type="text" placeholder='search cryptocurrencies'
                 value={searchValue}
                 onChange={(e)=> setSearchValue(e.target.value)}/>
                 <i className="fa-solid fa-magnifying-glass"></i>
             </div>
-        
-            <StyledTable>
+        <StyledTable>
                 
                 <div className='main-crypto-container'>
-                    
                     <div>
                         <table>
-                            
-                            
                             <thead>
                                 <tr>
                                     <th>Rank</th>
@@ -52,6 +47,7 @@ const Cryptocurrencies = () => {
                                     <th>%24h</th>
                                     <th>Market Cap</th>
                                     <th>24hr Volume</th>
+                                    <th>last 1 day</th>
                                     
                                 </tr>
                             </thead>

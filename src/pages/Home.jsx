@@ -11,7 +11,7 @@ import CryptoContext from '../context/Crypto/CryptoContext'
 import CryptoList from '../components/Crypto/CryptoList'
 
 const Home = () => {
-    const { fetchCryptosData, coins, globalStats } = useContext(CryptoContext)
+    const { fetchCryptosData, coins, globalStats, loading } = useContext(CryptoContext)
     useEffect(()=>{
 
         fetchCryptosData(10);
@@ -63,15 +63,19 @@ const Home = () => {
                 </div>
             </StyledGlobalStats>
             <div className='header-container'>
-                <h2>Top 10  Crypto Currency Prices According To Market Cap</h2>
-                <div className="link-container">
-                    <Link to='/cryptocurencies'>See More</Link>
-                    <i className="fa-solid fa-arrow-right"></i>
-                </div>
+                {loading ? <h2>loading...</h2> : <>
+                                                    <h2>Top 10  Crypto Currency Prices According To Market Cap</h2>
+                                                    <div className="link-container">
+                                                        <Link to='/cryptocurencies'>See More</Link>
+                                                        <i className="fa-solid fa-arrow-right"></i>
+                                                    </div> 
+                                                </>}
             </div>
-            <StyledTable >
+            {
+                loading? <h2>loading...</h2> : <StyledTable >
                 <div>
                     <table>
+                        
                         <thead>
                             <tr>
                                 <th>Rank</th>
@@ -80,6 +84,7 @@ const Home = () => {
                                 <th>%24h</th>
                                 <th>Market Cap</th>
                                 <th>24hr Volume</th>
+                                <th>last 1 day</th>
                                 
                             </tr>
                         </thead>
@@ -91,6 +96,8 @@ const Home = () => {
                     </table>
                 </div>
             </StyledTable>
+            }
+            
         </StyledHome>
     )
 }
