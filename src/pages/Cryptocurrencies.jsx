@@ -8,7 +8,7 @@ import { StyledTable } from '../components/Styles/Table.Styled'
 import CryptoList from '../components/Crypto/CryptoList'
 import { StyledCryptos } from '../components/Styles/Cryptocurrencies.Styled'
 const Cryptocurrencies = () => {
-    const { fetchCryptosData, coins } = useContext(CryptoContext)
+    const { fetchCryptosData, coins, loading } = useContext(CryptoContext)
     const [coinList, setCoinList] = useState([])
     
     const [searchValue, setSearchValue] = useState('')
@@ -24,9 +24,9 @@ const Cryptocurrencies = () => {
         
     }, [searchValue, coins])
     
-    
     return (
-
+        loading ?  <h2>loading</h2> : 
+        
         <StyledCryptos>
             <div className='input-container'>
                 <input type="text" placeholder='search cryptocurrencies'
@@ -34,7 +34,7 @@ const Cryptocurrencies = () => {
                 onChange={(e)=> setSearchValue(e.target.value)}/>
                 <i className="fa-solid fa-magnifying-glass"></i>
             </div>
-        <StyledTable>
+            <StyledTable>
                 
                 <div className='main-crypto-container'>
                     <div>
@@ -61,7 +61,9 @@ const Cryptocurrencies = () => {
                 </div>
                 
             </StyledTable>
-        </StyledCryptos>
+    </StyledCryptos>
+
+        
     )
 }
 

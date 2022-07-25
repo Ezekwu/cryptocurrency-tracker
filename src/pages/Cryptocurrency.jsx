@@ -1,14 +1,35 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { StyledCryptoDetails } from '../components/Styles/CryptoDetails.Styled'
-
+import NumberFormat from 'react-number-format'
+import parse from 'html-react-parser';
 
 import CryptoContext from '../context/Crypto/CryptoContext'
+import LineChart from '../components/Crypto/LineChart'
+import Markets from '../components/Crypto/Markets'
+
 const Cryptocurrency = () => {
     const {coinId} = useParams()
 
-    const {fetchCoinDetails, cryptoDetails, loading} = useContext(CryptoContext)
+    
+    
+    
+    
+    
+
+    
+    const {
+        
+        fetchCoinDetails, 
+        fetchCoinMarkets, 
+        cryptoDetails, 
+        coinMarkets, 
+        loading
+        
+    } = useContext(CryptoContext)
+
+    // simplified ? setMarkets(coinMarkets.slice(0, 10)) : setMarkets(coinMarkets)
 
     const {
         symbol,
@@ -17,21 +38,20 @@ const Cryptocurrency = () => {
         iconUrl,
         links,
         supply,
-        numberOfMarkets,
-        numberOfExchanges,
         marketCap,
         price,
-        priceAt,
         change,
         rank,
         sparkline,
         allTimeHigh,
-        listedAt,
+        numberOfExchanges,
+        
         
     } = cryptoDetails
     
     useEffect(()=>{
         fetchCoinDetails(coinId)
+        fetchCoinMarkets(coinId)
     }, [])
     
     if(loading){
@@ -43,6 +63,9 @@ const Cryptocurrency = () => {
             <StyledCryptoDetails>
                 <div className="row-1">
                     <div className="col-1">
+                        <div className="rank">
+                            Rank #{rank}
+                        </div>
                         <div className='icon-name-container'>
                             <img src={iconUrl} alt="crypto icon" style={{
                                 width: '35px'
@@ -50,13 +73,11 @@ const Cryptocurrency = () => {
                             <h2>{name}</h2>
                             <div>{symbol}</div>
                         </div>
-                        <div className="rank">
-                            Rank #{rank}
-                        </div>
+                        
                         <div className="links">
                             {
                                 links &&  links.map((link)=> (
-                                    link.type =="website" ? <a href={link.url} target='_blank' rel="noreferrer">
+                                    link.type === "website" ? <a key={link.name} href={link.url} target='_blank' rel="noreferrer">
                                     <p>{link.name}</p>
                                     <i className="fa-solid fa-link"></i>
                             </a>: ''
@@ -65,7 +86,7 @@ const Cryptocurrency = () => {
 
                             {
                                 links &&  links.map((link)=> (
-                                    link.type =="facebook" ? <a href={link.url} target='_blank' rel="noreferrer">
+                                    link.type === "facebook" ? <a key={link.name} href={link.url} target='_blank' rel="noreferrer">
                                     <p>{link.name}</p>
                                     <i className="fa-brands fa-facebook-f"></i>
                             </a>: ''
@@ -74,7 +95,7 @@ const Cryptocurrency = () => {
 
                             {
                                 links &&  links.map((link)=> (
-                                    link.type =="github" ? <a href={link.url} target='_blank' rel="noreferrer">
+                                    link.type === "github" ? <a key={link.name} href={link.url} target='_blank' rel="noreferrer">
                                     <p>{link.name}</p>
                                     <i className="fa-brands fa-github"></i>
                             </a>: ''
@@ -82,7 +103,7 @@ const Cryptocurrency = () => {
                             }
                             {
                                 links &&  links.map((link)=> (
-                                    link.type =="reddit" ? <a href={link.url} target='_blank' rel="noreferrer">
+                                    link.type === "reddit" ? <a key={link.name} href={link.url} target='_blank' rel="noreferrer">
                                     <p>{link.name}</p>
                                     <i className="fa-brands fa-reddit-alien"></i>
                             </a>: ''
@@ -91,7 +112,7 @@ const Cryptocurrency = () => {
 
                             {
                                 links &&  links.map((link)=> (
-                                    link.type =="twitter" ? <a href={link.url} target='_blank' rel="noreferrer">
+                                    link.type === "twitter" ? <a key={link.name} href={link.url} target='_blank' rel="noreferrer">
                                     <p>{link.name}</p>
                                     <i className="fa-brands fa-twitter"></i>
                             </a>: ''
@@ -100,7 +121,7 @@ const Cryptocurrency = () => {
                             }
                             {
                                 links &&  links.map((link)=> (
-                                    link.type =="discord" ? <a href={link.url} target='_blank' rel="noreferrer">
+                                    link.type === "discord" ? <a key={link.name} href={link.url} target='_blank' rel="noreferrer">
                                     <p>{link.name}</p>
                                     <i className="fa-brands fa-discord"></i>
                             </a>: ''
@@ -110,7 +131,7 @@ const Cryptocurrency = () => {
 
                             {
                                 links &&  links.map((link)=> (
-                                    link.type =="youtube" ? <a href={link.url} target='_blank' rel="noreferrer">
+                                    link.type === "youtube" ? <a key={link.name} href={link.url} target='_blank' rel="noreferrer">
                                     <p>{link.name}</p>
                                     <i className="fa-brands fa-youtube"></i>
                             </a>: ''
@@ -121,18 +142,143 @@ const Cryptocurrency = () => {
                     </div>
         
                     <div className="col-2">
-                        <h3>{symbol} Price</h3>
+                        <h3 className='symbol' >{symbol &&  symbol} Price</h3>
                         <div className="price-price_change-container">
-                            <h2 className='price'>{price}</h2>
+                            <h2 className='price'>${price}</h2>
 
-                            {change.includes('-') ? <div className='price-change down'>
-                                <h3>{change}</h3>
-                            </div> : <div className='price-change up'>
-                                <h3>{change}</h3>
-                            </div>}
+                            {change && change.includes('-') ?
+                                <h3 className=' down'><i className="fa-solid fa-sort-down"></i> {change}%</h3>
+                            : 
+                                <h3 className=' up'><i className="fa-solid fa-sort-up"></i> {change}%</h3>
+                            }
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <div className="row-2">
+                    <LineChart />
+                    <div className="details-description">
+                        <div className="description">
+                            <h3>What is {name}?</h3>
+                            {parse(`${description}`)}
+                        </div>
+                        <div className="crypto-details">
+                            <h2>{name} Price Statistics</h2>
+                            <p>{name} Price Today</p>
+
+                            <div className="stat">
+                                <p className="tag">
+                                    {name} Price
+                                </p>
+                                <p className='value'>
+                                        <NumberFormat 
+                                        displayType={'text'} 
+                                        thousandSeparator={true}
+                                        value={price}
+                                        prefix={'$'}/>   
+                                </p>
+                            </div>
+
+                            <div className="stat">
+                                <p className="tag">
+                                    Price Change 
+                                </p>
+                                <div className='value price-change'>
+                                    
+                                    {change && change.includes('-') ?
+                                <h3 className=' price-down'><i className="fa-solid fa-sort-down"></i> {change}%</h3>
+                                : <h3 className=' price-up'><i className="fa-solid fa-sort-up"></i> {change}%</h3>
+                            }
+                                </div>
+                                
+                            </div>
+
+                            <div className="stat">
+                                <p className="tag">
+                                    Market Cap
+                                </p>
+                                <p className='value'>
+                                <NumberFormat 
+                                        displayType={'text'} 
+                                        thousandSeparator={true}
+                                        value={marketCap}
+                                        prefix={'$'}/>
+                                    
+                                </p>
+                            </div>
+
+                            <div className="stat">
+                                <p className="tag">
+                                    Market Cap Rank
+                                </p>
+                                <p className='value'>
+                                    #{rank}
+                                </p>
+                            </div>
+
+                            <div className="stat">
+                                <p className="tag">
+                                    Circulating Supply
+                                </p>
+                                <p className='value'>
+                                <NumberFormat 
+                                        displayType={'text'} 
+                                        thousandSeparator={true}
+                                        value={supply?.circulating}
+                                        />
+                                    
+                                </p>
+                            </div>
+
+                            <div className="stat">
+                                <p className="tag">
+                                    Total Supply
+                                </p>
+                                <p className='value'>
+                                <NumberFormat 
+                                        displayType={'text'} 
+                                        thousandSeparator={true}
+                                        value={supply?.total}
+                                        />
+                                </p>
+                            </div>
+
+                            <div className="stat">
+                                <p className="tag">
+                                    24hr Volume
+                                </p>
+                                <p className='value'>
+                                <NumberFormat 
+                                        displayType={'text'} 
+                                        thousandSeparator={true}
+                                        value={cryptoDetails['24hVolume']}
+                                        prefix={'$'}/>
+                                </p>
+                            </div>
+
+                            <div className="stat">
+                                <p className="tag">
+                                    ATH
+                                </p>
+                                
+                                    
+                                    <p className='value'> <NumberFormat 
+                                        displayType={'text'} 
+                                        thousandSeparator={true}
+                                        value={allTimeHigh?.price}
+                                        prefix={'$'}/>  </p>
+                                    
+                                
+                            </div>
+
                             
                         </div>
                     </div>
+                </div>
+                <div className="row-3">
+                    <h2>{name} Markets</h2>
+                    <Markets coinMarkets={coinMarkets} loading={loading} />
                 </div>
             </StyledCryptoDetails>
         )

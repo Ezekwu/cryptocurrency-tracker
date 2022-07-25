@@ -24,7 +24,7 @@ const CryptoList = ({ coin }) => {
                 value={coin.price}
                 prefix={'$'}/> </td>
                 
-                <td>{coin.change.includes('-') ? <div className=' price-change-container down'> <i className="fa-solid fa-chevron-down"></i> {coin.change} </div> :  <div className=' price-change-container up'> <i className="fa-solid fa-chevron-up"></i> {coin.change} </div>}  </td>
+                <td>{coin.change.includes('-') ? <div className=' price-change-container down'> <i className="fa-solid fa-arrow-trend-down"></i> {coin.change} </div> :  <div className=' price-change-container up'> <i className="fa-solid fa-arrow-trend-up"></i> {coin.change} </div>}  </td>
                 
                 <td> <NumberFormat 
                 displayType={'text'} 

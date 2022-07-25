@@ -9,7 +9,8 @@ export const CryptoProvider = ({ children }) => {
         coins: [],
         loading: false,
         globalStats: [],
-        cryptoDetails: {}
+        cryptoDetails: {},
+        coinMarkets :[]
     }
     const [state, dispatch] = useReducer(CryptoReducer, initialState)
 
@@ -62,12 +63,27 @@ export const CryptoProvider = ({ children }) => {
             payload: coinDetails
         })
     }
+
+    const fetchCoinMarkets = async (coinId) => {
+        setLoading()
+        const response = await fetch(`${CRYPTO_URL}/coin/${coinId}/markets?limit=100`, options)
+        const data = await response.json()
+        const coinMarkets = data.data.markets
+        
+
+        dispatch({
+            type: 'GET_COIN_MARKETS',
+            payload: coinMarkets
+        })
+    }
+    
     
     return (
         <CryptoContext.Provider value={{
             ...state,
             fetchCryptosData,
-            fetchCoinDetails
+            fetchCoinDetails,
+            fetchCoinMarkets
         }}>
             {children}
         </CryptoContext.Provider>
