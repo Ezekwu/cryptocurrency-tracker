@@ -10,7 +10,7 @@ const Markets = ({ loading, coinMarkets }) => {
     
     useEffect(()=> {
         simplified ? setMarkets(coinMarkets.slice(0, 10)) : setMarkets(coinMarkets)
-    }, [simplified])
+    }, [simplified, markets])
 
     const toggleSimplified = () => {
         setSimplified(prevState => !prevState)
