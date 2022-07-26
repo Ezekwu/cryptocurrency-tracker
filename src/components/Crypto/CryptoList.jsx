@@ -69,6 +69,11 @@ const CryptoList = ({ coin }) => {
                             }
                             
                             
+                        },
+                        stroke: {
+                            show: true,
+                            width: 1,
+                            
                         }
                     }}>
 

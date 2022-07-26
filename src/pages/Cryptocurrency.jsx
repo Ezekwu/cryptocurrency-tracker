@@ -11,26 +11,20 @@ import Markets from '../components/Crypto/Markets'
 
 const Cryptocurrency = () => {
     const {coinId} = useParams()
-
-    
-    
-    
-    
-    
-
     
     const {
         
         fetchCoinDetails, 
         fetchCoinMarkets, 
-        cryptoDetails, 
+        fetchCoinPriceHistory,
+        cryptoDetails,
+        coinHistory,
         coinMarkets, 
         loading
         
     } = useContext(CryptoContext)
 
-    // simplified ? setMarkets(coinMarkets.slice(0, 10)) : setMarkets(coinMarkets)
-
+    
     const {
         symbol,
         name,
@@ -52,6 +46,7 @@ const Cryptocurrency = () => {
     useEffect(()=>{
         fetchCoinDetails(coinId)
         fetchCoinMarkets(coinId)
+        
     }, [])
     
     if(loading){
@@ -157,7 +152,7 @@ const Cryptocurrency = () => {
                     </div>
                 </div>
                 <div className="row-2">
-                    <LineChart />
+                    <LineChart coinId={coinId}/>
                     <div className="details-description">
                         <div className="description">
                             <h3>What is {name}?</h3>

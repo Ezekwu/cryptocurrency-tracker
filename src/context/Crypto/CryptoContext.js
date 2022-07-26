@@ -10,6 +10,7 @@ export const CryptoProvider = ({ children }) => {
         loading: false,
         globalStats: [],
         cryptoDetails: {},
+        coinHistory: [],
         coinMarkets :[]
     }
     const [state, dispatch] = useReducer(CryptoReducer, initialState)
@@ -63,6 +64,18 @@ export const CryptoProvider = ({ children }) => {
             payload: coinDetails
         })
     }
+    
+    const fetchCoinPriceHistory = async (coinId, timePeriod) => {
+        // setLoading()
+        const response = await fetch(`${CRYPTO_URL}/coin/${coinId}/history?timePeriod=${timePeriod}`, options)
+        const data = await response.json()
+        const coinHistory = data?.data?.history
+        
+        dispatch({
+            type: 'GET_COIN_HISTORY',
+            payload: coinHistory
+        })
+    }
 
     const fetchCoinMarkets = async (coinId) => {
         setLoading()
@@ -83,7 +96,8 @@ export const CryptoProvider = ({ children }) => {
             ...state,
             fetchCryptosData,
             fetchCoinDetails,
-            fetchCoinMarkets
+            fetchCoinMarkets,
+            fetchCoinPriceHistory
         }}>
             {children}
         </CryptoContext.Provider>
