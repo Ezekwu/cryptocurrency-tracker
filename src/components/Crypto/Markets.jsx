@@ -1,21 +1,34 @@
 import React from 'react'
 import { StyledTable } from '../Styles/Table.Styled'
 import NumberFormat from 'react-number-format'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import CryptoContext from '../../context/Crypto/CryptoContext'
 
-const Markets = ({ loading, coinMarkets }) => {
+const Markets = ({ loading, coinId }) => {
+    const {coinMarkets, fetchCoinMarkets} = useContext(CryptoContext)
     const [simplified, setSimplified] = useState(true);
-    const [markets, setMarkets] = useState(coinMarkets)
-
+    const [markets, setMarkets] = useState([...coinMarkets])
     
     useEffect(()=> {
+        setMarkets(coinMarkets)
         simplified ? setMarkets(coinMarkets.slice(0, 10)) : setMarkets(coinMarkets)
-    }, [simplified, markets])
+       
+    }, [simplified, coinMarkets])
+
+    useEffect(()=> {
+        fetchCoinMarkets(coinId)
+        
+    },[])
+
+    
+
+
+    
 
     const toggleSimplified = () => {
         setSimplified(prevState => !prevState)
-        
-        }
+        console.log(simplified);
+    }
     
     
     return (
@@ -36,7 +49,7 @@ const Markets = ({ loading, coinMarkets }) => {
                 </thead>
                 <tbody>
                     {markets.map((market) => (
-                        <tr kety={market.uuid}>
+                        <tr key={market.uuid}>
                             <td>{market.rank}</td>
 
                             <td className='crypto-icon-name'>

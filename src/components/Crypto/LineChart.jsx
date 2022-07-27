@@ -3,22 +3,20 @@ import { useContext, useEffect, useState } from 'react'
 import CryptoContext from '../../context/Crypto/CryptoContext'
 import NumberFormat from 'react-number-format'
 import Chart from 'react-apexcharts'
-const LineChart = ({ coinId }) => {
+
+const LineChart = ({ coinId, timeStamp }) => {
     const { fetchCoinPriceHistory, coinHistory } = useContext(CryptoContext);
     const newCoinHistory = [...coinHistory];
     
     
-    const time = ['3h', '24h', '7d', '30d', '3m', '1y', '3y', '5y']
-
+    
     
     const coinPrices = newCoinHistory.map((history) => {
         return history.price
     })
     
 
-    const coinTimeStamp = newCoinHistory.map((history) => {
-        return history.timestamp
-    })
+    
     
     // const coinPrices = []
     // const coinTimeStamp = []
@@ -36,23 +34,25 @@ const LineChart = ({ coinId }) => {
     
     
     useEffect(()=>{
-        fetchCoinPriceHistory(coinId, '24h')
-    },[])
+        fetchCoinPriceHistory(coinId, timeStamp)
+    },[timeStamp])
 
     return (
         <div>
-            hello
+            
             <Chart
-            type='area'
+            type='line'
             series={
                 [
                     {
-                        data:[...coinPrices.reverse()]
+                        name: 'Price in USD',
+                        data:[...coinPrices.reverse()],
+                        
                     }
                 ]
             }
             options={{
-                colors:['rgba(23, 136, 229, 0.493)'],
+                colors:['rgba(23, 136, 229, 0.87)'],
                 dataLabels: {
                     enabled: false
                 },
@@ -60,7 +60,32 @@ const LineChart = ({ coinId }) => {
                     show: true,
                     width: 2,
                     
-                }
+                },
+                xaxis: {
+                    categories: [],
+                    labels: {
+                        show:false
+                    }
+                },
+                yaxis: {
+                    categories: [],
+                    labels: {
+                        show:true,
+                        style: {
+                            colors: [],
+                            fontSize: '16px',
+                            
+                            fontWeight: 400,
+                            
+                        },
+                    },
+                    
+                },
+                
+                
+
+
+                
             }}
             >
 

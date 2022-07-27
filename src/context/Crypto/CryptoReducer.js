@@ -31,7 +31,7 @@ const CryptoReducer = (state, action) => {
             return{
                 ...state,
                 coinMarkets: action.payload,
-                loading: false
+                // loading: false
             }
 
         case('SET_LOADING'):

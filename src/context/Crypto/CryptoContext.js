@@ -78,7 +78,7 @@ export const CryptoProvider = ({ children }) => {
     }
 
     const fetchCoinMarkets = async (coinId) => {
-        setLoading()
+        // setLoading()
         const response = await fetch(`${CRYPTO_URL}/coin/${coinId}/markets?limit=100`, options)
         const data = await response.json()
         const coinMarkets = data.data.markets

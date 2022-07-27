@@ -207,9 +207,48 @@ export const StyledCryptoDetails = styled.div`
         font-size: .85rem;
         margin-bottom: 3rem;
         line-height: 1.4rem;
+        
+    }
+    .chart-heading{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2rem;
     }
 
+    .row-2 h3{
+        
+        font-size:20px;
+    }
+    .row-2 ul{
+        display: flex;
+        gap: 10px;
+        background-color: ${({theme})=> theme.colors.navBar};
+        padding: 10px 15px;
+        border-radius: 4px;
+    }
+    .row-2 li{
+        cursor: pointer;
+        padding: 7px;
+        list-style-type: none;
+        font-weight: bold;
+        color: ${({theme})=>theme.colors.secondaryText};
+    }
+    .active{
+        background-color: ${({theme})=> theme.colors.mainBackground};
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    .row-2 li:hover{
+        background-color: ${({theme})=> theme.colors.mainBackground};
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        
+        
+    }
     .row-3 h2{
         margin-bottom: 3rem;
     }
+
+    
 `

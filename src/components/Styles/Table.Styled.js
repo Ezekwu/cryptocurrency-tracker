@@ -80,6 +80,7 @@ export const StyledTable = styled.div`
     .markets-btn{
         background-color:${({theme})=> theme.colors.navBar};
         color: ${({theme})=>theme.colors.primaryText};
+        
         font-weight: bold;
         font-size: 1rem;
         padding: 1.2rem 4.5rem;

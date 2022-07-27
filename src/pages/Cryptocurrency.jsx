@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { StyledCryptoDetails } from '../components/Styles/CryptoDetails.Styled'
 import NumberFormat from 'react-number-format'
+import millify from "millify";
+
 import parse from 'html-react-parser';
 
 import CryptoContext from '../context/Crypto/CryptoContext'
@@ -11,6 +13,23 @@ import Markets from '../components/Crypto/Markets'
 
 const Cryptocurrency = () => {
     const {coinId} = useParams()
+    const time = ['3h', '24h', '7d', '30d', '3m', '1y', '3y', '5y']
+
+    const[timeStamp, setTimeStamp] = useState('24h')
+    
+    let items = Array.from(document.getElementsByClassName('item'))
+    
+    
+    const setTime = (e) => {
+        for(let index = 0; index < items.length; index++) {
+            const item = items[index]
+            item.classList.remove('active')
+        }
+        e.target.setAttribute('aria-selected', true)
+        e.target.classList.add('active')
+        setTimeStamp( e.target.innerText)
+        
+    }
     
     const {
         
@@ -45,7 +64,7 @@ const Cryptocurrency = () => {
     
     useEffect(()=>{
         fetchCoinDetails(coinId)
-        fetchCoinMarkets(coinId)
+        
         
     }, [])
     
@@ -152,7 +171,19 @@ const Cryptocurrency = () => {
                     </div>
                 </div>
                 <div className="row-2">
-                    <LineChart coinId={coinId}/>
+                    <div className='chart-heading'>
+                        <h3>{name} Price  Chart</h3>
+                        <ul>
+                            <li aria-selected='false'className='item' onClick={setTime}>3h</li>
+                            <li aria-selected='true'className='active item' onClick={setTime}>24h</li>
+                            <li aria-selected='false' className='item' onClick={setTime}>30d</li>
+                            <li aria-selected='false' className='item' onClick={setTime}>3m</li>
+                            <li aria-selected='false' className='item' onClick={setTime}>1y</li>
+                            <li aria-selected='false' className='item' onClick={setTime}>3y</li>
+                            <li aria-selected='false' className='item' onClick={setTime}>5y</li>
+                        </ul>
+                    </div>
+                    <LineChart coinId={coinId} timeStamp={timeStamp}/>
                     <div className="details-description">
                         <div className="description">
                             <h3>What is {name}?</h3>
@@ -273,7 +304,7 @@ const Cryptocurrency = () => {
                 </div>
                 <div className="row-3">
                     <h2>{name} Markets</h2>
-                    <Markets coinMarkets={coinMarkets} loading={loading} />
+                    <Markets  loading={loading} coinId={coinId}/>
                 </div>
             </StyledCryptoDetails>
         )
