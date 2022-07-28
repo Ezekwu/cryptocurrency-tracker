@@ -11,7 +11,8 @@ export const CryptoProvider = ({ children }) => {
         globalStats: [],
         cryptoDetails: {},
         coinHistory: [],
-        coinMarkets :[]
+        coinMarkets :[],
+        
     }
     const [state, dispatch] = useReducer(CryptoReducer, initialState)
 
@@ -89,6 +90,9 @@ export const CryptoProvider = ({ children }) => {
             payload: coinMarkets
         })
     }
+
+    
+    
     
     
     return (

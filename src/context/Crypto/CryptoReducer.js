@@ -33,6 +33,12 @@ const CryptoReducer = (state, action) => {
                 coinMarkets: action.payload,
                 // loading: false
             }
+        case('GET_EXCHANGES'):
+            return{
+                ...state,
+                exchanges: action.payload,
+                loading: false
+            }
 
         case('SET_LOADING'):
             return{
