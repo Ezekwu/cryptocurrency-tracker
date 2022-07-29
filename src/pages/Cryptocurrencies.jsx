@@ -4,7 +4,6 @@ import { useContext } from 'react'
 import CryptoContext from '../context/Crypto/CryptoContext'
 
 import { StyledTable } from '../components/Styles/Table.Styled'
-
 import CryptoList from '../components/Crypto/CryptoList'
 import { StyledCryptos } from '../components/Styles/Cryptocurrencies.Styled'
 const Cryptocurrencies = () => {

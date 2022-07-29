@@ -18,7 +18,7 @@ const Home = () => {
     const { fetchNews, News } = useContext(NewsContext)
 
     useEffect(()=>{
-        fetchNews()
+        fetchNews('cryptocurrency', 6)
         fetchCryptosData(10);
 
     },[])
@@ -114,7 +114,7 @@ const Home = () => {
                     <i className="fa-solid fa-arrow-right"></i>
 
                 </div> 
-                                                
+                
             </div>
                 <div className='news-grid'>
                     {News.map((news) =>(

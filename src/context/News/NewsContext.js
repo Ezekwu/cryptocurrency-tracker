@@ -16,7 +16,7 @@ export const NewsProvider = ({ children }) => {
         })
     }
 
-    const fetchNews = async () => {
+    const fetchNews = async ( category , count) => {
         setLoading()
         const options = {
             method: 'GET',
@@ -27,7 +27,7 @@ export const NewsProvider = ({ children }) => {
             }
         };
         
-        const response = await fetch('https://bing-news-search1.p.rapidapi.com/news/search?q=cryptocurrency&count=6&setLang=EN%20(English)&freshness=Day&textFormat=Raw&safeSearch=Off', options);
+        const response = await fetch(`https://bing-news-search1.p.rapidapi.com/news/search?q=${category}&count=${count}&setLang=EN%20(English)&freshness=Day&textFormat=Raw&safeSearch=Off`, options);
 
         const data = await response.json()
         const newsArray = data.value

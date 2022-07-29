@@ -71,6 +71,12 @@ label:active:after {
 	width: 20px;
 }
 
+.news-grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1.3rem;
+    }
 `
 
 export default GlobalStyles

@@ -3,13 +3,19 @@ export const StyledNewsList = styled.div`
     padding: 1rem;
     box-shadow: 0px 1px 4px rgba(0,0,0,0.1); 
     border-radius: 6px;
+
+    a{
+        text-decoration: none;
+        height: 100%;
+        display: block;
+    }
     &:hover{
         box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
     }
     .row-1{
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 25px;
         margin-bottom: 10px;
     }
     .row-1 img{
@@ -19,7 +25,9 @@ export const StyledNewsList = styled.div`
 
     h3{
         font-size: 1.1rem;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        border-left: 3px solid ${({theme})=> theme.colors.mainBlue};
+        padding:0 0 0 8px;
     }
 
     .row-1 p{
@@ -28,6 +36,7 @@ export const StyledNewsList = styled.div`
     }
 
     .row-2{
+       
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -43,6 +52,6 @@ export const StyledNewsList = styled.div`
         border-radius: 50%;
     }
     .row-2 p{
-        font-size: .8rem;
+        font-size: .7rem;
     }
 `

@@ -1,26 +1,42 @@
 import React from 'react'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import NewsContext from '../context/News/NewsContext'
+import CryptoContext from '../context/Crypto/CryptoContext'
+import NewsList from '../components/News/NewsList'
+import { StyledNews } from '../components/Styles/NewsStyled'
+
 const News = () => {
     const { fetchNews, News, loading } = useContext(NewsContext)
+    const {coins, fetchCryptosData} = useContext(CryptoContext)
+
+    const [category, setCategory] = useState('cryptocurrency')
 
     useEffect(() => {
-        fetchNews()
-    }, [])
+        fetchCryptosData(100)
+        fetchNews(category, 10)
+    }, [category])
 
     return (
-        <div>
+        loading ? <h2>loading</h2> :
+        
+    <StyledNews>
+        <select  
+        id="news category"
+        value={category}
+        onChange={(e)=> setCategory(e.target.value)}>
+            <option value="cryptocurrency">cryptocurrency</option>
+            {coins.map((coin)=>(
+                
+                <option key={coin.uuid} value={coin.name}>{coin.name}</option>
+            ))}
+        </select>
+        <div className='news-grid'>
             {News.map((news) =>(
-                <div>
-                    <img src={news?.image?.thumbnail?.contentUrl} alt="" width={'100px'}/>
-                    <p>{news.name}</p>
-                </div>
+                <NewsList news={news} key={news.name}/>
             ))}
         </div>
-        
-
-
-    )
+    </StyledNews>
+        )
 }
 
 export default News
