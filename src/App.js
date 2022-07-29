@@ -13,6 +13,7 @@ import NotFound from './pages/NotFound';
 
 import { CryptoProvider } from './context/Crypto/CryptoContext';
 import { ExchangesProvider } from './context/Exchanges/ExchangesContext';
+import { NewsProvider } from './context/News/NewsContext';
 import GlobalStyles from './components/Styles/Global';
 
 const lightTheme = {
@@ -50,29 +51,31 @@ function App() {
   return (
     <CryptoProvider>
       <ExchangesProvider>
-        <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
-          <GlobalStyles />
-          <div className="app">
-            <Router>
-              <Navbar toggleTheme={toggleTheme}/>
-              <div className='main-container'>
-                <main >
-                  <Routes>
-                    <Route path='/' element={<Home />}/>
-                    <Route path='/cryptocurencies' element={<Cryptocurrencies />}/>
-                    <Route path='/coin/:coinId' element={<Cryptocurrency />}/>
-                    <Route path='/exchanges' element={<Exchanges />}/>
-                    <Route path='/news' element={<News />}/>
-                    <Route path='/*' element={<NotFound />}/>
-                  </Routes>
-                </main>
-                <button onClick={toggleTheme}>click</button>
-                <Footer />
-              </div>
-              
-            </Router>
-          </div>
-        </ThemeProvider>
+        <NewsProvider>
+          <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
+            <GlobalStyles />
+            <div className="app">
+              <Router>
+                <Navbar toggleTheme={toggleTheme}/>
+                <div className='main-container'>
+                  <main >
+                    <Routes>
+                      <Route path='/' element={<Home />}/>
+                      <Route path='/cryptocurencies' element={<Cryptocurrencies />}/>
+                      <Route path='/coin/:coinId' element={<Cryptocurrency />}/>
+                      <Route path='/exchanges' element={<Exchanges />}/>
+                      <Route path='/news' element={<News />}/>
+                      <Route path='/*' element={<NotFound />}/>
+                    </Routes>
+                  </main>
+                  <button onClick={toggleTheme}>click</button>
+                  <Footer />
+                </div>
+                
+              </Router>
+            </div>
+          </ThemeProvider>
+        </NewsProvider>
       </ExchangesProvider>
     </CryptoProvider>
   );

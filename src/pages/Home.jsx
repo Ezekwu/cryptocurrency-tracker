@@ -3,17 +3,22 @@ import { StyledGlobalStats } from '../components/Styles/GlobalStats.Styled'
 import { useContext, useEffect } from 'react'
 import NumberFormat from 'react-number-format'
 import { Link } from 'react-router-dom'
-
+import Moment from 'react-moment'
 
 import { StyledTable } from '../components/Styles/Table.Styled'
 import { StyledHome } from '../components/Styles/Home.Styled'
 import CryptoContext from '../context/Crypto/CryptoContext'
 import CryptoList from '../components/Crypto/CryptoList'
+import NewsContext from '../context/News/NewsContext'
+import NewsList from '../components/News/NewsList'
+
 
 const Home = () => {
     const { fetchCryptosData, coins, globalStats, loading } = useContext(CryptoContext)
-    useEffect(()=>{
+    const { fetchNews, News } = useContext(NewsContext)
 
+    useEffect(()=>{
+        fetchNews()
         fetchCryptosData(10);
 
     },[])
@@ -65,9 +70,11 @@ const Home = () => {
             <div className='header-container'>
                 {loading ? <h2>loading...</h2> : <>
                                                     <h2>Top 10  Crypto Currency Prices According To Market Cap</h2>
+                                                    
                                                     <div className="link-container">
                                                         <Link to='/cryptocurencies'>See More</Link>
                                                         <i className="fa-solid fa-arrow-right"></i>
+
                                                     </div> 
                                                 </>}
             </div>
@@ -97,7 +104,24 @@ const Home = () => {
                 </div>
             </StyledTable>
             }
-            
+            <div className='news-section'>
+            <div className='header-container'>
+                
+                <h2>Top Cryptocurrency News</h2>
+                
+                <div className="link-container">
+                    <Link to='/news'>See More</Link>
+                    <i className="fa-solid fa-arrow-right"></i>
+
+                </div> 
+                                                
+            </div>
+                <div className='news-grid'>
+                    {News.map((news) =>(
+                        <NewsList key={news.name} news={news} />
+                    ))}
+                </div>
+            </div>
         </StyledHome>
     )
 }
