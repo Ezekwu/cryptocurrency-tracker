@@ -3,13 +3,12 @@ import { useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { StyledCryptoDetails } from '../components/Styles/CryptoDetails.Styled'
 import NumberFormat from 'react-number-format'
-import millify from "millify";
 
 import parse from 'html-react-parser';
-
 import CryptoContext from '../context/Crypto/CryptoContext'
 import LineChart from '../components/Crypto/LineChart'
 import Markets from '../components/Crypto/Markets'
+import Loader from '../components/Layout/Loader'
 
 const Cryptocurrency = () => {
     const {coinId} = useParams()
@@ -19,7 +18,7 @@ const Cryptocurrency = () => {
     
     let items = Array.from(document.getElementsByClassName('item'))
     
-    
+    //set time stamp for chart
     const setTime = (e) => {
         for(let index = 0; index < items.length; index++) {
             const item = items[index]
@@ -43,6 +42,7 @@ const Cryptocurrency = () => {
         
     } = useContext(CryptoContext)
 
+    
     
     const {
         symbol,
@@ -68,12 +68,9 @@ const Cryptocurrency = () => {
         
     }, [])
     
-    if(loading){
+    
         return (
-            <h2>loading...</h2>
-        )
-    }else{
-        return (
+            loading ? <Loader /> : 
             <StyledCryptoDetails>
                 <div className="row-1">
                     <div className="col-1">
@@ -81,9 +78,8 @@ const Cryptocurrency = () => {
                             Rank #{rank}
                         </div>
                         <div className='icon-name-container'>
-                            <img src={iconUrl} alt="crypto icon" style={{
-                                width: '35px'
-                            }}/>
+                            <img src={iconUrl} alt="crypto icon" 
+                            />
                             <h2>{name}</h2>
                             <div>{symbol}</div>
                         </div>
@@ -190,7 +186,7 @@ const Cryptocurrency = () => {
                             {parse(`${description}`)}
                         </div>
                         <div className="crypto-details">
-                            <h2>{name} Price Statistics</h2>
+                            <h3>{name} Price Statistics</h3>
                             <p>{name} Price Today</p>
 
                             <div className="stat">
@@ -306,11 +302,14 @@ const Cryptocurrency = () => {
                     <h2>{name} Markets</h2>
                     <Markets  loading={loading} coinId={coinId}/>
                 </div>
+                <div className='news-grid row-4'>
+                    
+                </div>
             </StyledCryptoDetails>
         )
     }
     
     
-}
+
 
 export default Cryptocurrency

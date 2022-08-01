@@ -74,4 +74,7 @@ export const StyledNavbar = styled.nav`
     .theme-container > div{
         align-self: flex-start;
     }
+    @media(max-width: 1000px){
+        display: none;
+    }
 `

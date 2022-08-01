@@ -1,8 +1,14 @@
 import React from 'react'
-
+import { StyledLoader } from '../Styles/LoaderStyled'
 const Loader = () => {
     return (
-        <div>Loader</div>
+        <div className="loader">
+            <div className="loader-wrapper">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
     )
 }
 

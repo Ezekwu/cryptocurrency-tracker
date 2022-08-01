@@ -8,7 +8,7 @@ const CryptoList = ({ coin }) => {
     
 
     return (
-        
+            
             <tr key={coin.uuid}>
                 <td>{coin.rank}</td>
                 <td>

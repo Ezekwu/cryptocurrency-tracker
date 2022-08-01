@@ -15,6 +15,7 @@ import { CryptoProvider } from './context/Crypto/CryptoContext';
 import { ExchangesProvider } from './context/Exchanges/ExchangesContext';
 import { NewsProvider } from './context/News/NewsContext';
 import GlobalStyles from './components/Styles/Global';
+import MobileNav from './components/Layout/MobileNav';
 
 const lightTheme = {
   colors: {
@@ -45,7 +46,7 @@ function App() {
 
   const toggleTheme = ()=> {
     setLightMode(prevState => !prevState)
-    console.log(lightMode);
+    
   }
   
   return (
@@ -57,6 +58,7 @@ function App() {
             <div className="app">
               <Router>
                 <Navbar toggleTheme={toggleTheme}/>
+                <MobileNav toggleTheme={toggleTheme} lightMode={lightMode}/>
                 <div className='main-container'>
                   <main >
                     <Routes>

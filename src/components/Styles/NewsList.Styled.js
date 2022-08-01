@@ -3,6 +3,7 @@ export const StyledNewsList = styled.div`
     padding: 1rem;
     box-shadow: 0px 1px 4px rgba(0,0,0,0.1); 
     border-radius: 6px;
+    text-align: left;
 
     a{
         text-decoration: none;
@@ -36,7 +37,7 @@ export const StyledNewsList = styled.div`
     }
 
     .row-2{
-       
+        
         display: flex;
         justify-content: space-between;
         align-items: center;

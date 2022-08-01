@@ -6,6 +6,7 @@ import CryptoContext from '../context/Crypto/CryptoContext'
 import { StyledTable } from '../components/Styles/Table.Styled'
 import CryptoList from '../components/Crypto/CryptoList'
 import { StyledCryptos } from '../components/Styles/Cryptocurrencies.Styled'
+import Loader from '../components/Layout/Loader'
 const Cryptocurrencies = () => {
     const { fetchCryptosData, coins, loading } = useContext(CryptoContext)
     const [coinList, setCoinList] = useState([])
@@ -24,7 +25,7 @@ const Cryptocurrencies = () => {
     }, [searchValue, coins])
     
     return (
-        loading ?  <h2>loading</h2> : 
+        loading ? <Loader /> : 
         
         <StyledCryptos>
             <div className='input-container'>

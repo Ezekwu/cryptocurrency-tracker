@@ -12,7 +12,7 @@ const Markets = ({ loading, coinId }) => {
     useEffect(()=> {
         setMarkets(coinMarkets)
         simplified ? setMarkets(coinMarkets.slice(0, 10)) : setMarkets(coinMarkets)
-       
+        
     }, [simplified, coinMarkets])
 
     useEffect(()=> {

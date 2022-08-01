@@ -3,13 +3,15 @@ import ExchangesContext from '../context/Exchanges/ExchangesContext'
 import { useContext, useEffect } from 'react'
 import { StyledTable } from '../components/Styles/Table.Styled'
 import NumberFormat from 'react-number-format'
+import Loader from '../components/Layout/Loader'
 
 const Exchanges = () => {
-    const {fetchExchanges, exchanges} = useContext(ExchangesContext)
+    const {fetchExchanges, exchanges, loading} = useContext(ExchangesContext)
     useEffect(()=>{
         fetchExchanges()
     },[])
     return (
+        loading ? <Loader /> :
         <>
             <StyledTable>
                 <table>

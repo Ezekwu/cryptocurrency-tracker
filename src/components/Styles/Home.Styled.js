@@ -5,10 +5,14 @@ export const StyledHome = styled.div`
     background-color:${({theme})=> theme.colors.mainBackground} ;
     .header-container{
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         margin-bottom: 2rem;
         font-size: .9rem;
+    }
+
+    .header-container h2{
+        width: 60%;
     }
     
     .link-container{
@@ -20,7 +24,7 @@ export const StyledHome = styled.div`
         text-decoration: none;
         color:${({theme})=> theme.colors.mainBlue};
         font-weight: bold;
-        
+        font-size: .9rem;
     }
     .link-container i{
         color:${({theme})=> theme.colors.mainBlue};
@@ -31,4 +35,31 @@ export const StyledHome = styled.div`
     .news-section{
         margin-top: 3rem;
     }
+
+    @media(max-width: 850px) {
+    .header-container {
+        font-size: .8rem;
+    }
+    .link-container a{
+        font-size: .8rem;
+    }
+}
+
+@media(max-width: 600px) {
+    .header-container {
+        font-size: .7rem;
+    }
+    .link-container a{
+        font-size: .7rem;
+    }
+}
+
+@media(max-width: 450px) {
+    .header-container {
+        font-size: .6rem;
+    }
+    .link-container a{
+        font-size: .6rem;
+    }
+}
 `

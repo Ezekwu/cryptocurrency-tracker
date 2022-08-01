@@ -10,12 +10,17 @@ const LineChart = ({ coinId, timeStamp }) => {
     
     
     
-    
     const coinPrices = newCoinHistory.map((history) => {
-        return history.price
+        return Number(history.price)
+        
     })
     
 
+    const reversedCoinPrices = coinPrices.reverse()
+    const fixedPrices = reversedCoinPrices.map((price)=> (
+        price.toFixed(4)
+    ))
+    console.log(fixedPrices);
     
     
     // const coinPrices = []
@@ -46,7 +51,7 @@ const LineChart = ({ coinId, timeStamp }) => {
                 [
                     {
                         name: 'Price in USD',
-                        data:[...coinPrices.reverse()],
+                        data:[...fixedPrices],
                         
                     }
                 ]
@@ -78,11 +83,37 @@ const LineChart = ({ coinId, timeStamp }) => {
                             fontWeight: 400,
                             
                         },
+                        
                     },
+                    
                     
                 },
                 
-                
+                responsive:[{
+                    breakpoint: 600,
+                    options: {
+                        chart: {
+                            height: '480px'
+                        },
+                        yaxis: {
+                            categories: [],
+                            labels: {
+                                
+                                style: {
+                                    colors: [],
+                                    fontSize: '12px',
+                                    
+                                    fontWeight: 400,
+                                    
+                                },
+                                
+                            },
+                            
+      
+                            
+                        },
+                    }
+                }]
 
 
                 

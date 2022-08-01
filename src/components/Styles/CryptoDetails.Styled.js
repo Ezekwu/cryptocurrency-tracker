@@ -22,6 +22,9 @@ export const StyledCryptoDetails = styled.div`
     .icon-name-container h2{
         font-size: 1.6rem;
     }
+    .icon-name-container img{
+        width: 35px;
+    }
 
     .icon-name-container > div{
         font-size: .8rem;
@@ -97,7 +100,6 @@ export const StyledCryptoDetails = styled.div`
     .price-price_change-container{
         display: flex;
         flex-direction: column;
-        
         align-items: flex-end;
         gap: 15px;
     }
@@ -152,8 +154,9 @@ export const StyledCryptoDetails = styled.div`
         align-self: flex-start;
     }
 
-    .crypto-details h2{
+    .crypto-details h3{
         margin-bottom: 1.5rem;
+        color: ${({theme})=>theme.colors.primaryText};
     }
 
     .crypto-details > p{
@@ -249,6 +252,62 @@ export const StyledCryptoDetails = styled.div`
     .row-3 h2{
         margin-bottom: 3rem;
     }
+    @media (max-width:800px) {
+        .details-description{
+            flex-direction: column;
+        }
+        .crypto-details{
+            width: 93%;
+            margin: 0 auto;
+            padding: 1.2rem .7rem 4rem;
+        }
+        .value{
+            margin-left: 0;
+        }
+    }
+    @media(max-width:600px) {
+        padding: 0 1rem;
+        .row-1{
+            flex-direction: column;
+        }
+        .col-2{
+            
+        }
+        .col-2 .symbol{
+            margin-left: 0;
+            margin-top: 2rem;
+        }
+        .crypto-details h3{
+            font-size: 1.2rem;
+        }
+        .price-price_change-container{
+        
+        align-items: flex-start;
+        
+        }
+        .chart-heading{
+            flex-direction: column;
+            gap: 20px;
+        }
+        .icon-name-container img{
+        width: 30px;
+    }
 
-    
+    .icon-name-container h2{
+        font-size: 1.3rem;
+    }
+    .links a i{
+        font-size: .8rem;
+    }
+    .price-price_change-container .price{
+        font-size: 1.6rem;
+    }
+    .tag{
+        font-size: .75rem;
+
+    }
+    .value{
+        font-size: .75rem;
+    }
+    }
 `

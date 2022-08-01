@@ -23,6 +23,7 @@ export const StyledTable = styled.div`
         text-align: left;
         overflow-y: hidden;
         width: 100%;
+        font-size: .9rem;
     }
     thead{
         background-color: ${({theme})=> theme.colors.navBar};
@@ -30,9 +31,7 @@ export const StyledTable = styled.div`
     
     td, th{
         padding: .9rem 1rem;
-        
         border-bottom: 1px solid ${({theme})=> theme.colors.borderColor};
-        
     }
 
     th{
@@ -46,15 +45,16 @@ export const StyledTable = styled.div`
     }
     table h3{
         display: inline-block;
-        font-size: 1rem;
+        font-size: .9rem;
     }
-    td:nth-child(2), td:nth-child(2){
+    td:nth-child(2) {
         min-width: 300px;
     }
 
     .crypto-icon-name{
         display: flex;
         align-items: center;
+        
     }
     .exchange-pair{
         color: ${({theme})=>theme.colors.mainBlue};
@@ -103,18 +103,20 @@ export const StyledTable = styled.div`
         }
         th:nth-child(1), td:nth-child(1) {
             position: sticky;
-            left: 20px;
+            left: 0px;
             z-index: 100; 
             
         }
         th:nth-child(2):after, td:nth-child(2):after {
                 content:'';
                 position:absolute;
-                left: 0;
+                left: -0px;
                 bottom: -1px;
                 width:100%;
                 border-bottom: 1px solid ${({theme})=> theme.colors.borderColor};
             }
+
+            
 
             th:nth-child(1):after, td:nth-child(1):after {
                 content:'';
@@ -126,10 +128,40 @@ export const StyledTable = styled.div`
             }
         th:nth-child(2), td:nth-child(2) {
             position: sticky;
-            left: 90px;
+            left: 70px;
             z-index: 100;
-            /* background-color:${({theme})=> theme.colors.mainBackground} ; */
+            
             border-bottom: 1px solid ${({theme})=> theme.colors.borderColor}; 
         }
     }
+    @media(max-width:850px) {
+        td:nth-child(2) {
+        min-width: 180px;
+    }
+    td, th{
+        padding: .9rem .9rem;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            left: 50px;
+        }
+    
+    }
+
+    @media(max-width:600px) {
+        td:nth-child(2) {
+        min-width: 130px;
+    }
+
+    td, th{
+        padding: .9rem .7rem;
+        }
+    }
+
+    @media(max-width:450px) {
+        table {
+            font-size: .8rem;
+        }
+    }
+
 `
