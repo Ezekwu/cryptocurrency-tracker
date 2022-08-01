@@ -15,7 +15,7 @@ const MobileNav = ({ toggleTheme, lightMode }) => {
         setShowMenu(false)
     }
     return (
-        <StyledMobileNav>
+        <StyledMobileNav className='mobile-nav'>
             <div className={ `overLay ${showMenu ? 'display' : 'hide'}` }>
                 
             </div>

@@ -23,6 +23,7 @@ const lightTheme = {
     secondaryText:'#585757',
     mainBlue: 'rgb(23 136 229)',
     navBar: 'rgb(247 247 247)',
+    tag: '#ececec',
     mainBackground: 'white',
     borderColor: '#e9e9e9'
   }
@@ -33,9 +34,10 @@ const darkTheme = {
     primaryText: 'rgb(255, 255, 255)',
     secondaryText:'rgb(230 230 230 / 92%)',
     mainBlue: 'rgb(27 151 255)',
-    navBar: '#17171A',
+    navBar: '#060606',
+    tag: '#171717',
     fontWeight: '300',
-    mainBackground:'#17171A',
+    mainBackground:'black',
     borderColor: '#424242'
   }
 }
@@ -70,7 +72,7 @@ function App() {
                       <Route path='/*' element={<NotFound />}/>
                     </Routes>
                   </main>
-                  <button onClick={toggleTheme}>click</button>
+                  
                   <Footer />
                 </div>
                 

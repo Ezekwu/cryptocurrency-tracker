@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledHome = styled.div`
-    padding: 0 1.3rem;
-    background-color:${({theme})=> theme.colors.mainBackground} ;
+    padding: 0 1.3rem ;
+    
     .header-container{
         display: flex;
         align-items: flex-start;

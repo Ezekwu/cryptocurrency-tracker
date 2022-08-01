@@ -27,6 +27,9 @@ export const StyledTable = styled.div`
     }
     thead{
         background-color: ${({theme})=> theme.colors.navBar};
+        position: sticky;
+        top: 0;
+        
     }
     
     td, th{
@@ -38,6 +41,11 @@ export const StyledTable = styled.div`
         border-top: 1px solid ${({theme})=> theme.colors.borderColor};
         color: ${({theme})=>theme.colors.primaryText};
         background-color:${({theme})=> theme.colors.navBar} ;
+        
+    }
+    tr:hover{
+        background-color:${({theme})=> theme.colors.navBar} ;
+        transition: all .1s ease-in;
     }
     table img{
         width: 28px;
@@ -80,7 +88,6 @@ export const StyledTable = styled.div`
     .markets-btn{
         background-color:${({theme})=> theme.colors.navBar};
         color: ${({theme})=>theme.colors.primaryText};
-        
         font-weight: bold;
         font-size: 1rem;
         padding: 1.2rem 4.5rem;
@@ -156,12 +163,20 @@ export const StyledTable = styled.div`
     td, th{
         padding: .9rem .7rem;
         }
+    .markets-btn{
+        padding: 1rem 3.5rem;
+        font-size: .9rem;
+    }
     }
 
     @media(max-width:450px) {
         table {
             font-size: .8rem;
         }
+        .markets-btn{
+        padding: .85rem 2.5rem;
+        font-size: .8rem;
+    }
     }
 
 `

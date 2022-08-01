@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const StyledMobileNav = styled.nav`
-overflow-x: hidden;
-
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+width:100%;
+z-index: 200;
 border-bottom: 1px solid ${({theme})=> theme.colors.borderColor};
-background-color:${({theme})=> theme.colors.mainBackground} ;
+background-color:${({theme})=> theme.colors.navBar} ;
 display: none;
 justify-content: space-between;
 align-items: center;
@@ -19,7 +23,7 @@ align-items: center;
     height: 100%;
     z-index: 120;
     background-color: rgba(0,0,0,0.5);
-
+    padding: 300rem;
 }
     .logo-container{
         display: flex;

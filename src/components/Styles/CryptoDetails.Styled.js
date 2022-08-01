@@ -30,14 +30,14 @@ export const StyledCryptoDetails = styled.div`
         font-size: .8rem;
         font-weight: bold;
         color: ${({theme})=>theme.colors.primaryText};
-        background-color: rgb(234, 233, 233);
+        background-color: ${({theme})=>theme.colors.tag};
         padding:5px 8px;
         border-radius: 5px;
     }
 
     .rank{
-        color: ${({theme})=>theme.colors.secondaryText};
-        background-color: rgb(234, 233, 233);
+        color: ${({theme})=>theme.colors.primaryText};
+        background-color: ${({theme})=> theme.colors.tag};
         padding:5px 8px;
         border-radius: 5px;
         font-weight: bold;
@@ -57,7 +57,7 @@ export const StyledCryptoDetails = styled.div`
         gap: 5px;
         color: ${({theme})=>theme.colors.secondaryText} ;
         text-decoration: none;
-        background-color: rgb(234, 233, 233);
+        background-color: ${({theme})=>theme.colors.tag};
         padding:5px 8px;
         border-radius: 5px;
         font-weight: bold;
@@ -90,7 +90,7 @@ export const StyledCryptoDetails = styled.div`
         margin-left: auto;
         font-size: .9rem;
         margin-bottom: .8rem;
-        background-color: rgb(234, 233, 233);
+        background-color: ${({theme})=>theme.colors.tag};
         padding:5px 8px;
         border-radius: 5px;
         width: fit-content;

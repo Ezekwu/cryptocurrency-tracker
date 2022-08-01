@@ -16,9 +16,11 @@ export const StyledCryptos = styled.div`
         padding: .9rem 1.8rem;
     }
     input{
-        
+        margin-right: 10px;
         outline: none;
         border: none;
+        color: ${({theme})=>theme.colors.secondaryText};
+        background-color:${({theme})=> theme.colors.mainBackground} ;
     }
     .input-container:hover{
         box-shadow: 0px 0px 4px rgb(174 218 255);

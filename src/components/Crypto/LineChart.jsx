@@ -18,23 +18,15 @@ const LineChart = ({ coinId, timeStamp }) => {
 
     const reversedCoinPrices = coinPrices.reverse()
     const fixedPrices = reversedCoinPrices.map((price)=> (
-        price.toFixed(4)
+        price.toFixed(7)
     ))
     console.log(fixedPrices);
     
     
-    // const coinPrices = []
-    // const coinTimeStamp = []
-    // for (let index = 0; index < coinHistory?.length; index++) {
-    //     coinPrices.push(coinHistory[index]?.price)
-    //     coinTimeStamp.push(coinHistory[index]?.timestamp)
-    // }
+    
 
     
-    // coinHistory.forEach((history)=>{
-    //     coinPrices.push(history?.price)
-    //     coinTimeStamp.push(history?.timestamp)
-    // })
+    
 
     
     
@@ -79,8 +71,7 @@ const LineChart = ({ coinId, timeStamp }) => {
                         style: {
                             colors: [],
                             fontSize: '16px',
-                            
-                            fontWeight: 400,
+                            fontWeight: 500,
                             
                         },
                         

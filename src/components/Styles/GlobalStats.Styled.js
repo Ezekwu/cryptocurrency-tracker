@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledGlobalStats = styled.div`
-    overflow-x: scroll;
     
     display: flex;
     gap: 23px;
@@ -28,6 +27,8 @@ export const StyledGlobalStats = styled.div`
     
 
     @media(max-width: 720px) {
+        overflow-x: scroll;
+    
         div:nth-child(3) {
             margin-right: 30px;
         }

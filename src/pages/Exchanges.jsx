@@ -2,6 +2,7 @@ import React from 'react'
 import ExchangesContext from '../context/Exchanges/ExchangesContext'
 import { useContext, useEffect } from 'react'
 import { StyledTable } from '../components/Styles/Table.Styled'
+import { StyledExchanges } from '../components/Styles/Exchanges.Styled'
 import NumberFormat from 'react-number-format'
 import Loader from '../components/Layout/Loader'
 
@@ -12,7 +13,9 @@ const Exchanges = () => {
     },[])
     return (
         loading ? <Loader /> :
-        <>
+        <StyledExchanges>
+            <h2>Top Cryptocurrency  Exchanges</h2>
+            <p>Exchanges are ranked and scored  based on traffic, liquidity, trading volumes, and confidence in the legitimacy of trading volumes reported.</p>
             <StyledTable>
                 <table>
                     <thead>
@@ -55,7 +58,7 @@ const Exchanges = () => {
                 </table>
                     
             </StyledTable>
-        </>
+        </StyledExchanges>
     )
 }
 

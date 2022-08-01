@@ -2,6 +2,8 @@ import React from 'react'
 import { StyledNavbar } from '../Styles/Navbar.Styled'
 import logo from '../../Assets/logo.png'
 import { NavLink } from 'react-router-dom'
+
+
 const Navbar = ({ toggleTheme }) => {
     return (
         

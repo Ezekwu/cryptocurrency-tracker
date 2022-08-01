@@ -30,6 +30,7 @@ h3,h4{
 	margin: 0 auto;
 }
 .main-container{
+	min-height: 100%;
     margin-left: 278px;
 }
 
@@ -130,7 +131,9 @@ label:active:after {
 		height: 32px;
 	}
 	}
+    
 
+	
 
 
 	@media(max-width:1000px) {
@@ -140,6 +143,9 @@ label:active:after {
 		.loader-wrapper{
 			transform: translate(-50%, -50%);
 		}
+		.mobile-nav + .main-container{
+		padding-top: 60px;
+	}
 	}
 
 	@media(max-width:800px) {

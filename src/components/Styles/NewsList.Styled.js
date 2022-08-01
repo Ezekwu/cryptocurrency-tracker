@@ -4,11 +4,13 @@ export const StyledNewsList = styled.div`
     box-shadow: 0px 1px 4px rgba(0,0,0,0.1); 
     border-radius: 6px;
     text-align: left;
-
+    background-color: ${({theme})=> theme.colors.navBar};
     a{
         text-decoration: none;
         height: 100%;
         display: block;
+        
+    
     }
     &:hover{
         box-shadow: 0px 1px 4px rgba(0,0,0,0.2);
