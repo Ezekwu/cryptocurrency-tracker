@@ -33,8 +33,17 @@ export const StyledCryptos = styled.div`
         color:grey ;
     }
     @media (max-width:600px) {
+        .input-container{
+            width: 250px;
+        }
+        
     h2{
         font-size: 1.2rem;
+    }
+    @media (max-width:450px) {
+        .input-container{
+            width: 220px;
+        }
     }
 }
 `

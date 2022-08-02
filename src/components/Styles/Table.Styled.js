@@ -167,6 +167,9 @@ export const StyledTable = styled.div`
         padding: 1rem 3.5rem;
         font-size: .9rem;
     }
+    table h3{
+        font-size: .81rem;
+    }
     }
 
     @media(max-width:450px) {
