@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { StyledCryptoDetails } from '../components/Styles/CryptoDetails.Styled'
 import NumberFormat from 'react-number-format'
+import DOMPurify from 'dompurify';
 
-import parse from 'html-react-parser';
 import CryptoContext from '../context/Crypto/CryptoContext'
 import LineChart from '../components/Crypto/LineChart'
 import Markets from '../components/Crypto/Markets'
@@ -53,6 +53,7 @@ const Cryptocurrency = () => {
         
     } = cryptoDetails
     
+    const pureDescription = DOMPurify.sanitize(description)
     useEffect(()=>{
         fetchCoinDetails(coinId)
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -173,7 +174,7 @@ const Cryptocurrency = () => {
                     <div className="details-description">
                         <div className="description">
                             <h3>What is {name}?</h3>
-                            {description}
+                            <div dangerouslySetInnerHTML={{ __html: pureDescription }} />
                         </div>
                         <div className="crypto-details">
                             <h3>{name} Price Statistics</h3>
