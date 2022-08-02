@@ -238,13 +238,13 @@ export const StyledCryptoDetails = styled.div`
         color: ${({theme})=>theme.colors.secondaryText};
     }
     .active{
-        background-color: ${({theme})=> theme.colors.mainBackground};
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        background-color: ${({theme})=>theme.colors.tag};
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
     }
     .row-2 li:hover{
-        background-color: ${({theme})=> theme.colors.mainBackground};
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        background-color: ${({theme})=>theme.colors.tag};
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         
         
@@ -300,7 +300,7 @@ export const StyledCryptoDetails = styled.div`
         font-size: .8rem;
     }
     .price-price_change-container .price{
-        font-size: 1.6rem;
+        font-size: 1.45rem;
     }
     .tag{
         font-size: .75rem;
