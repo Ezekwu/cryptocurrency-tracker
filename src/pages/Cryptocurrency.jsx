@@ -12,8 +12,7 @@ import Loader from '../components/Layout/Loader'
 
 const Cryptocurrency = () => {
     const {coinId} = useParams()
-    const time = ['3h', '24h', '7d', '30d', '3m', '1y', '3y', '5y']
-
+    
     const[timeStamp, setTimeStamp] = useState('24h')
     
     let items = Array.from(document.getElementsByClassName('item'))
@@ -31,15 +30,9 @@ const Cryptocurrency = () => {
     }
     
     const {
-        
         fetchCoinDetails, 
-        fetchCoinMarkets, 
-        fetchCoinPriceHistory,
         cryptoDetails,
-        coinHistory,
-        coinMarkets, 
         loading
-        
     } = useContext(CryptoContext)
 
     
@@ -55,18 +48,15 @@ const Cryptocurrency = () => {
         price,
         change,
         rank,
-        sparkline,
         allTimeHigh,
-        numberOfExchanges,
         
         
     } = cryptoDetails
     
     useEffect(()=>{
         fetchCoinDetails(coinId)
-        
-        
-    }, [])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [])
     
     
         return (
@@ -170,13 +160,13 @@ const Cryptocurrency = () => {
                     <div className='chart-heading'>
                         <h3>{name} Price  Chart</h3>
                         <ul>
-                            <li aria-selected='false'className='item' onClick={setTime}>3h</li>
-                            <li aria-selected='true'className='active item' onClick={setTime}>24h</li>
-                            <li aria-selected='false' className='item' onClick={setTime}>30d</li>
-                            <li aria-selected='false' className='item' onClick={setTime}>3m</li>
-                            <li aria-selected='false' className='item' onClick={setTime}>1y</li>
-                            <li aria-selected='false' className='item' onClick={setTime}>3y</li>
-                            <li aria-selected='false' className='item' onClick={setTime}>5y</li>
+                            <li className='item' onClick={setTime}>3h</li>
+                            <li className='active item' onClick={setTime}>24h</li>
+                            <li  className='item' onClick={setTime}>30d</li>
+                            <li  className='item' onClick={setTime}>3m</li>
+                            <li  className='item' onClick={setTime}>1y</li>
+                            <li  className='item' onClick={setTime}>3y</li>
+                            <li  className='item' onClick={setTime}>5y</li>
                         </ul>
                     </div>
                     <LineChart coinId={coinId} timeStamp={timeStamp}/>

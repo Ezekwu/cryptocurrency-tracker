@@ -19,10 +19,12 @@ const MobileNav = ({ toggleTheme, lightMode }) => {
             <div className={ `overLay ${showMenu ? 'display' : 'hide'}` }>
                 
             </div>
-            <div className='logo-container'>
-                <img src={logo} alt="" />
-                <h2>Coin<span>Track</span></h2>
-            </div>
+            <NavLink to='/' >
+                <div className='logo-container'>
+                    <img src={logo} alt="" />
+                    <h2>Coin<span>Track</span></h2>
+                </div>
+            </NavLink>
 
             <div className={`nav-links ${showMenu ? 'show-menu' : 'hide-menu'}`}>
             <i className={`fa-solid fa-xmark ${showMenu ? 'display' : 'hide'}`} onClick={closeMenu}></i>

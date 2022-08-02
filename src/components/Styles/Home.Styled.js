@@ -7,7 +7,7 @@ export const StyledHome = styled.div`
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
         font-size: .9rem;
     }
 

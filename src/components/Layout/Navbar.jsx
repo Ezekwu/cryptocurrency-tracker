@@ -8,10 +8,12 @@ const Navbar = ({ toggleTheme }) => {
     return (
         
         <StyledNavbar>
-            <div className='logo-container'>
-                <img src={logo} alt="" />
-                <h2>Coin<span>Track</span></h2>
-            </div>
+            <NavLink to='/'>
+                <div className='logo-container'>
+                    <img src={logo} alt="" />
+                    <h2>Coin<span>Track</span></h2>
+                </div>
+            </NavLink>
             <div className="nav-links">
                 <NavLink to='/'>
                     <i className="fa-solid fa-house-chimney"></i>

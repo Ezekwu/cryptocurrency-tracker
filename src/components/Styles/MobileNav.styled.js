@@ -8,7 +8,7 @@ right: 0;
 width:100%;
 z-index: 200;
 border-bottom: 1px solid ${({theme})=> theme.colors.borderColor};
-background-color:${({theme})=> theme.colors.navBar} ;
+background-color:${({theme})=> theme.colors.navBar};
 display: none;
 justify-content: space-between;
 align-items: center;
@@ -38,23 +38,27 @@ align-items: center;
     .logo-container span{
         color:${({theme})=> theme.colors.mainBlue};
     }
-    
+
     a{
+        text-decoration: none;
+    }
+
+    .nav-links a{
         color: ${({theme})=>theme.colors.primaryText};
         text-decoration: none;
         padding: .8rem 3.5rem .8rem .8rem;
         border-radius: 6px;
-
     }
+
     a:hover{
         color:${({theme})=> theme.colors.mainBlue};
         transition: all .2s ease-in-out;
     }
 
-    a.active:hover{
+    .nav-links > a.active:hover{
         color: white;
     }
-    a.active{
+    .nav-links > a.active{
         background-color: ${({theme})=> theme.colors.mainBlue};
         color: white;
         font-weight: bold;

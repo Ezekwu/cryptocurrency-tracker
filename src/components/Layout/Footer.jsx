@@ -14,10 +14,12 @@ const Footer = () => {
     return (
         !loading &&   <StyledFooter>
             <div className='col-1'>
+            <NavLink to='/'>
                 <div className='logo-container'>
                     <img src={logo} alt="" />
                     <h2>Coin<span>Track</span></h2>
                 </div>
+            </NavLink>
                 <div className="footer-links">
                     <div>
                         <NavLink to='/'>

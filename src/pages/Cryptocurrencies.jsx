@@ -7,6 +7,7 @@ import { StyledTable } from '../components/Styles/Table.Styled'
 import CryptoList from '../components/Crypto/CryptoList'
 import { StyledCryptos } from '../components/Styles/Cryptocurrencies.Styled'
 import Loader from '../components/Layout/Loader'
+
 const Cryptocurrencies = () => {
     const { fetchCryptosData, coins, loading } = useContext(CryptoContext)
     const [coinList, setCoinList] = useState([])
@@ -14,6 +15,7 @@ const Cryptocurrencies = () => {
     const [searchValue, setSearchValue] = useState('')
     useEffect(()=>{
         fetchCryptosData(100);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
     //Search feature
@@ -25,9 +27,10 @@ const Cryptocurrencies = () => {
     }, [searchValue, coins])
     
     return (
-        loading ? <Loader /> : 
+        (loading || coins.length < 1) ? <Loader /> : 
         
         <StyledCryptos>
+            <h2>Search for a particular cryptocurrency</h2>
             <div className='input-container'>
                 <input type="text" placeholder='search cryptocurrencies'
                 value={searchValue}

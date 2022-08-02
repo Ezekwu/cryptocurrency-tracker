@@ -1,7 +1,6 @@
 import React from 'react'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import CryptoContext from '../../context/Crypto/CryptoContext'
-import NumberFormat from 'react-number-format'
 import Chart from 'react-apexcharts'
 
 const LineChart = ({ coinId, timeStamp }) => {
@@ -20,8 +19,6 @@ const LineChart = ({ coinId, timeStamp }) => {
     const fixedPrices = reversedCoinPrices.map((price)=> (
         price.toFixed(7)
     ))
-    console.log(fixedPrices);
-    
     
     
 
@@ -32,6 +29,7 @@ const LineChart = ({ coinId, timeStamp }) => {
     
     useEffect(()=>{
         fetchCoinPriceHistory(coinId, timeStamp)
+        
     },[timeStamp])
 
     return (

@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const StyledCryptos = styled.div`
     padding: 2rem 1.3rem;
-    
+    h2{
+        margin-bottom:  2rem;
+        text-align: center;
+    }
     .input-container{
         text-align: center;
         margin:0 auto 2rem;
@@ -29,5 +32,10 @@ export const StyledCryptos = styled.div`
     .input-container i{
         color:grey ;
     }
+    @media (max-width:600px) {
+    h2{
+        font-size: 1.2rem;
+    }
+}
 `
 

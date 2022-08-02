@@ -10,6 +10,7 @@ const Exchanges = () => {
     const {fetchExchanges, exchanges, loading} = useContext(ExchangesContext)
     useEffect(()=>{
         fetchExchanges()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     return (
         loading ? <Loader /> :

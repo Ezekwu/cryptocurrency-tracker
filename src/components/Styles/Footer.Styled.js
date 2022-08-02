@@ -9,6 +9,10 @@ margin-top: 3rem;
 background-color: ${({theme})=> theme.colors.navBar};
 font-size: .85rem;
 
+    a{
+        text-decoration: none;
+    }
+
     p, i{
         color: ${({theme})=>theme.colors.secondaryText};
     }
@@ -82,6 +86,7 @@ font-size: .85rem;
         }
         
     }
+    
     @media (max-width: 500px) {
         .col-1{
             flex-direction: column;

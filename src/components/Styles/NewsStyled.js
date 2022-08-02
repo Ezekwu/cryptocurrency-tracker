@@ -35,6 +35,10 @@ select:active{
     box-shadow: 0px 0px 4px rgb(174 218 255);
 }
 
+@media (max-width:1000px) {
+        padding-top: 60px;
+    }
+
 @media (max-width:600px) {
     h2{
         font-size: 1.2rem;

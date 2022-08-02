@@ -34,10 +34,10 @@ export const StyledNavbar = styled.nav`
         transition: all .2s ease-in-out;
     }
 
-    a.active:hover{
+    .nav-links a.active:hover{
         color: white;
     }
-    a.active{
+    .nav-links a.active{
         background-color: ${({theme})=> theme.colors.mainBlue};
         color: white;
         font-weight: bold;
