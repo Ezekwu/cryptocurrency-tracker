@@ -173,7 +173,7 @@ const Cryptocurrency = () => {
                     <div className="details-description">
                         <div className="description">
                             <h3>What is {name}?</h3>
-                            {parse(`${description}`)}
+                            {description}
                         </div>
                         <div className="crypto-details">
                             <h3>{name} Price Statistics</h3>
