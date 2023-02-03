@@ -14,7 +14,7 @@ const NewsList = ({  news  }) => {
                             <img src={news?.image?.thumbnail?.contentUrl || crypto} alt="" /> 
                             <div>
                                 <h3>{news?.name.length > 50 ? `${news?.name.substr(0, 50)}...` : news?.name}</h3>
-                                <p>{news?.description.length > 100 ? `${news?.description.substr(0, 100)}...` : news?.description.length}</p>
+                                <p>{news?.description.length > 100 ? `${news?.description.substr(0, 100)}...` : news?.description.length}</p> 
                             </div>
                         </div>
                         <div className='row-2'>

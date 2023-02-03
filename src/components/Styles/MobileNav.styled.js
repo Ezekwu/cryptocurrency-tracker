@@ -55,7 +55,7 @@ align-items: center;
         transition: all .2s ease-in-out;
     }
 
-    .nav-links > a.active:hover{
+    .nav-links  a.active:hover{
         color: white;
     }
     .nav-links > a.active{

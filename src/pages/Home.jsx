@@ -21,6 +21,7 @@ const Home = () => {
         fetchNews('cryptocurrency', 6)
         fetchCryptosData(10);
 
+
     },[])
     
     const {
@@ -117,11 +118,11 @@ const Home = () => {
             </div> 
             
         </div>
-            <div className='news-grid'>
+            {/* <div className='news-grid'>
                 {News.map((news) =>(
                     <NewsList key={news.name} news={news} />
                 ))}
-            </div>
+            </div> */}
         </div>
     </StyledHome>
     )

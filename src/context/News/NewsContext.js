@@ -31,6 +31,7 @@ export const NewsProvider = ({ children }) => {
 
         const data = await response.json()
         const newsArray = data.value
+        console.log(newsArray)
 
         dispatch({
             type:'GET_NEWS',

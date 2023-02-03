@@ -28,10 +28,10 @@ const Navbar = ({ toggleTheme }) => {
                     <i className="fa-solid fa-right-left"></i>
                     Exchanges
                 </NavLink>
-                <NavLink to='/news'>
+                {/* <NavLink to='/news'>
                     <i className="fa-solid fa-newspaper"></i>
                     News
-                </NavLink>
+                </NavLink> */}
             </div>
             <div className='theme-wrapper'>
                 <p>Theme</p>
